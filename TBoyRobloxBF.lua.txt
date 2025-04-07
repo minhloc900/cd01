@@ -1,4 +1,4 @@
-- https://t.me/+jrjgJajhd-diOTg1
+-- https://t.me/+jrjgJajhd-diOTg1
 
 
 shared.LoaderTitle = "Đăng Ký Kênh Toilaminhlocday";
@@ -2682,13 +2682,6 @@ v16.Home:AddButton({
     Callback = function()
         setclipboard("https://t.me/+jrjgJajhd-diOTg1");
     end
-    Title = "Youtube",
-    Description = "1",
-    Callback = function()
-        setclipboard("https://t.me/+jrjgJajhd-diOTg1");
-    end
-  end);
-end
 });
 _G.FastAttackStrix_Mode = "Super Fast Attack";
 spawn(function()
