@@ -313,7 +313,7 @@ v5:Destroy();
 -- end);
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "Xigua Hub",
+    Title = "XIGUA Hub",
     SubTitle = "by minhloc",
     TabWidth = 160,
     Theme = "Rose",
