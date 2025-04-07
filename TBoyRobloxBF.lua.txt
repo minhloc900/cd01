@@ -1,6 +1,6 @@
--- https://t.me/+jrjgJajhd-diOTg1
+- https://t.me/+jrjgJajhd-diOTg1
 
-getgenv().Team = "Pirates"
+
 shared.LoaderTitle = "Đăng Ký Kênh Toilaminhlocday";
 shared.LoaderKeyFrames = {
     [1] = {
@@ -2677,11 +2677,18 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy();
 end
 v16.Home:AddButton({
-    Title = "Discord",
-    Description = "Giao Lưu",
+    Title = "Telegram",
+    Description = "Giao Lưu(coppy link)share script",
     Callback = function()
-        setclipboard("https://discord.gg/tboyroblox");
+        setclipboard("https://t.me/+jrjgJajhd-diOTg1");
     end
+    Title = "Youtube",
+    Description = "1",
+    Callback = function()
+        setclipboard("https://t.me/+jrjgJajhd-diOTg1");
+    end
+  end);
+end
 });
 _G.FastAttackStrix_Mode = "Super Fast Attack";
 spawn(function()
