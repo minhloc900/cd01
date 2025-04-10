@@ -1111,6 +1111,410 @@ function CheckBossQuest()
         end
     end
 end
+function isnil(v198)
+    return v198 == nil ;
+end
+local function v20(v199)
+    return math.floor(tonumber(v199) + 0.5);
+end
+Number = math.random(1, 1000000);
+function UpdatePlayerChams()
+    for v427, v428 in pairs(game:GetService("Players"):GetChildren()) do
+        pcall(function()
+            if not isnil(v428.Character) then
+                if ESPPlayer then
+                    if (not isnil(v428.Character.Head) and not v428.Character.Head:FindFirstChild("NameEsp" .. Number)) then
+                        local v1146 = Instance.new("BillboardGui", v428.Character.Head);
+                        v1146.Name = "NameEsp" .. Number ;
+                        v1146.ExtentsOffset = Vector3.new(0, 1, 0);
+                        v1146.Size = UDim2.new(1, 200, 1, 30);
+                        v1146.Adornee = v428.Character.Head;
+                        v1146.AlwaysOnTop = true;
+                        local v1153 = Instance.new("TextLabel", v1146);
+                        v1153.Font = Enum.Font.GothamSemibold;
+                        v1153.FontSize = "Size10";
+                        v1153.TextWrapped = true;
+                        v1153.Text = v428.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v428.Character.Head.Position).Magnitude / 3) .. " Distance" ;
+                        v1153.Size = UDim2.new(1, 0, 1, 0);
+                        v1153.TextYAlignment = "Top";
+                        v1153.BackgroundTransparency = 1;
+                        v1153.TextStrokeTransparency = 0.5;
+                        if (v428.Team == game.Players.LocalPlayer.Team) then
+                            v1153.TextColor3 = Color3.new(0, 0, 254);
+                        else
+                            v1153.TextColor3 = Color3.new(255, 0, 0);
+                        end
+                    else
+                        v428.Character.Head["NameEsp" .. Number ].TextLabel.Text = v428.Name .. " | " .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v428.Character.Head.Position).Magnitude / 3) .. " Distance\nHealth : " .. v20((v428.Character.Humanoid.Health * 100) / v428.Character.Humanoid.MaxHealth) .. "%" ;
+                    end
+                elseif v428.Character.Head:FindFirstChild("NameEsp" .. Number) then
+                    v428.Character.Head:FindFirstChild("NameEsp" .. Number):Destroy();
+                end
+            end
+        end);
+    end
+end
+function UpdateChestChams()
+    for v429, v430 in pairs(game.Workspace:GetChildren()) do
+        pcall(function()
+            if string.find(v430.Name, "Chest") then
+                if ChestESP then
+                    if string.find(v430.Name, "Chest") then
+                        if not v430:FindFirstChild("NameEsp" .. Number) then
+                            local v1475 = Instance.new("BillboardGui", v430);
+                            v1475.Name = "NameEsp" .. Number ;
+                            v1475.ExtentsOffset = Vector3.new(0, 1, 0);
+                            v1475.Size = UDim2.new(1, 200, 1, 30);
+                            v1475.Adornee = v430;
+                            v1475.AlwaysOnTop = true;
+                            local v1481 = Instance.new("TextLabel", v1475);
+                            v1481.Font = Enum.Font.GothamSemibold;
+                            v1481.FontSize = "Size14";
+                            v1481.TextWrapped = true;
+                            v1481.Size = UDim2.new(1, 0, 1, 0);
+                            v1481.TextYAlignment = "Top";
+                            v1481.BackgroundTransparency = 1;
+                            v1481.TextStrokeTransparency = 0.5;
+                            if (v430.Name == "Chest1") then
+                                v1481.TextColor3 = Color3.fromRGB(109, 109, 109);
+                                v1481.Text = "Chest 1" .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v430.Position).Magnitude / 3) .. " Distance" ;
+                            end
+                            if (v430.Name == "Chest2") then
+                                v1481.TextColor3 = Color3.fromRGB(173, 158, 21);
+                                v1481.Text = "Chest 2" .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v430.Position).Magnitude / 3) .. " Distance" ;
+                            end
+                            if (v430.Name == "Chest3") then
+                                v1481.TextColor3 = Color3.fromRGB(85, 255, 255);
+                                v1481.Text = "Chest 3" .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v430.Position).Magnitude / 3) .. " Distance" ;
+                            end
+                        else
+                            v430["NameEsp" .. Number ].TextLabel.Text = v430.Name .. "   \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v430.Position).Magnitude / 3) .. " Distance" ;
+                        end
+                    end
+                elseif v430:FindFirstChild("NameEsp" .. Number) then
+                    v430:FindFirstChild("NameEsp" .. Number):Destroy();
+                end
+            end
+        end);
+    end
+end
+function UpdateDevilChams()
+    for v431, v432 in pairs(game.Workspace:GetChildren()) do
+        pcall(function()
+            if DevilFruitESP then
+                if string.find(v432.Name, "Fruit") then
+                    if not v432.Handle:FindFirstChild("NameEsp" .. Number) then
+                        local v1164 = Instance.new("BillboardGui", v432.Handle);
+                        v1164.Name = "NameEsp" .. Number ;
+                        v1164.ExtentsOffset = Vector3.new(0, 1, 0);
+                        v1164.Size = UDim2.new(1, 200, 1, 30);
+                        v1164.Adornee = v432.Handle;
+                        v1164.AlwaysOnTop = true;
+                        local v1171 = Instance.new("TextLabel", v1164);
+                        v1171.Font = Enum.Font.GothamSemibold;
+                        v1171.FontSize = "Size14";
+                        v1171.TextWrapped = true;
+                        v1171.Size = UDim2.new(1, 0, 1, 0);
+                        v1171.TextYAlignment = "Top";
+                        v1171.BackgroundTransparency = 1;
+                        v1171.TextStrokeTransparency = 0.5;
+                        v1171.TextColor3 = Color3.fromRGB(255, 255, 255);
+                        v1171.Text = v432.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v432.Handle.Position).Magnitude / 3) .. " Distance" ;
+                    else
+                        v432.Handle["NameEsp" .. Number ].TextLabel.Text = v432.Name .. "   \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v432.Handle.Position).Magnitude / 3) .. " Distance" ;
+                    end
+                end
+            elseif v432.Handle:FindFirstChild("NameEsp" .. Number) then
+                v432.Handle:FindFirstChild("NameEsp" .. Number):Destroy();
+            end
+        end);
+    end
+end
+function UpdateFlowerChams()
+    for v433, v434 in pairs(game.Workspace:GetChildren()) do
+        pcall(function()
+            if ((v434.Name == "Flower2") or (v434.Name == "Flower1")) then
+                if FlowerESP then
+                    if not v434:FindFirstChild("NameEsp" .. Number) then
+                        local v1183 = Instance.new("BillboardGui", v434);
+                        v1183.Name = "NameEsp" .. Number ;
+                        v1183.ExtentsOffset = Vector3.new(0, 1, 0);
+                        v1183.Size = UDim2.new(1, 200, 1, 30);
+                        v1183.Adornee = v434;
+                        v1183.AlwaysOnTop = true;
+                        local v1189 = Instance.new("TextLabel", v1183);
+                        v1189.Font = Enum.Font.GothamSemibold;
+                        v1189.FontSize = "Size14";
+                        v1189.TextWrapped = true;
+                        v1189.Size = UDim2.new(1, 0, 1, 0);
+                        v1189.TextYAlignment = "Top";
+                        v1189.BackgroundTransparency = 1;
+                        v1189.TextStrokeTransparency = 0.5;
+                        v1189.TextColor3 = Color3.fromRGB(255, 0, 0);
+                        if (v434.Name == "Flower1") then
+                            v1189.Text = "Blue Flower" .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v434.Position).Magnitude / 3) .. " Distance" ;
+                            v1189.TextColor3 = Color3.fromRGB(0, 0, 255);
+                        end
+                        if (v434.Name == "Flower2") then
+                            v1189.Text = "Red Flower" .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v434.Position).Magnitude / 3) .. " Distance" ;
+                            v1189.TextColor3 = Color3.fromRGB(255, 0, 0);
+                        end
+                    else
+                        v434["NameEsp" .. Number ].TextLabel.Text = v434.Name .. "   \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v434.Position).Magnitude / 3) .. " Distance" ;
+                    end
+                elseif v434:FindFirstChild("NameEsp" .. Number) then
+                    v434:FindFirstChild("NameEsp" .. Number):Destroy();
+                end
+            end
+        end);
+    end
+end
+function UpdateRealFruitChams()
+    for v435, v436 in pairs(game.Workspace.AppleSpawner:GetChildren()) do
+        if v436:IsA("Tool") then
+            if RealFruitESP then
+                if not v436.Handle:FindFirstChild("NameEsp" .. Number) then
+                    local v907 = Instance.new("BillboardGui", v436.Handle);
+                    v907.Name = "NameEsp" .. Number ;
+                    v907.ExtentsOffset = Vector3.new(0, 1, 0);
+                    v907.Size = UDim2.new(1, 200, 1, 30);
+                    v907.Adornee = v436.Handle;
+                    v907.AlwaysOnTop = true;
+                    local v914 = Instance.new("TextLabel", v907);
+                    v914.Font = Enum.Font.GothamSemibold;
+                    v914.FontSize = "Size14";
+                    v914.TextWrapped = true;
+                    v914.Size = UDim2.new(1, 0, 1, 0);
+                    v914.TextYAlignment = "Top";
+                    v914.BackgroundTransparency = 1;
+                    v914.TextStrokeTransparency = 0.5;
+                    v914.TextColor3 = Color3.fromRGB(255, 0, 0);
+                    v914.Text = v436.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v436.Handle.Position).Magnitude / 3) .. " Distance" ;
+                else
+                    v436.Handle["NameEsp" .. Number ].TextLabel.Text = v436.Name .. " " .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v436.Handle.Position).Magnitude / 3) .. " Distance" ;
+                end
+            elseif v436.Handle:FindFirstChild("NameEsp" .. Number) then
+                v436.Handle:FindFirstChild("NameEsp" .. Number):Destroy();
+            end
+        end
+    end
+    for v437, v438 in pairs(game.Workspace.PineappleSpawner:GetChildren()) do
+        if v438:IsA("Tool") then
+            if RealFruitESP then
+                if not v438.Handle:FindFirstChild("NameEsp" .. Number) then
+                    local v926 = Instance.new("BillboardGui", v438.Handle);
+                    v926.Name = "NameEsp" .. Number ;
+                    v926.ExtentsOffset = Vector3.new(0, 1, 0);
+                    v926.Size = UDim2.new(1, 200, 1, 30);
+                    v926.Adornee = v438.Handle;
+                    v926.AlwaysOnTop = true;
+                    local v933 = Instance.new("TextLabel", v926);
+                    v933.Font = Enum.Font.GothamSemibold;
+                    v933.FontSize = "Size14";
+                    v933.TextWrapped = true;
+                    v933.Size = UDim2.new(1, 0, 1, 0);
+                    v933.TextYAlignment = "Top";
+                    v933.BackgroundTransparency = 1;
+                    v933.TextStrokeTransparency = 0.5;
+                    v933.TextColor3 = Color3.fromRGB(255, 174, 0);
+                    v933.Text = v438.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v438.Handle.Position).Magnitude / 3) .. " Distance" ;
+                else
+                    v438.Handle["NameEsp" .. Number ].TextLabel.Text = v438.Name .. " " .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v438.Handle.Position).Magnitude / 3) .. " Distance" ;
+                end
+            elseif v438.Handle:FindFirstChild("NameEsp" .. Number) then
+                v438.Handle:FindFirstChild("NameEsp" .. Number):Destroy();
+            end
+        end
+    end
+    for v439, v440 in pairs(game.Workspace.BananaSpawner:GetChildren()) do
+        if v440:IsA("Tool") then
+            if RealFruitESP then
+                if not v440.Handle:FindFirstChild("NameEsp" .. Number) then
+                    local v945 = Instance.new("BillboardGui", v440.Handle);
+                    v945.Name = "NameEsp" .. Number ;
+                    v945.ExtentsOffset = Vector3.new(0, 1, 0);
+                    v945.Size = UDim2.new(1, 200, 1, 30);
+                    v945.Adornee = v440.Handle;
+                    v945.AlwaysOnTop = true;
+                    local v952 = Instance.new("TextLabel", v945);
+                    v952.Font = Enum.Font.GothamSemibold;
+                    v952.FontSize = "Size14";
+                    v952.TextWrapped = true;
+                    v952.Size = UDim2.new(1, 0, 1, 0);
+                    v952.TextYAlignment = "Top";
+                    v952.BackgroundTransparency = 1;
+                    v952.TextStrokeTransparency = 0.5;
+                    v952.TextColor3 = Color3.fromRGB(251, 255, 0);
+                    v952.Text = v440.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v440.Handle.Position).Magnitude / 3) .. " Distance" ;
+                else
+                    v440.Handle["NameEsp" .. Number ].TextLabel.Text = v440.Name .. " " .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v440.Handle.Position).Magnitude / 3) .. " Distance" ;
+                end
+            elseif v440.Handle:FindFirstChild("NameEsp" .. Number) then
+                v440.Handle:FindFirstChild("NameEsp" .. Number):Destroy();
+            end
+        end
+    end
+end
+function UpdateIslandESP()
+    for v441, v442 in pairs(game:GetService("Workspace")['_WorldOrigin'].Locations:GetChildren()) do
+        pcall(function()
+            if IslandESP then
+                if (v442.Name ~= "Sea") then
+                    if not v442:FindFirstChild("NameEsp") then
+                        local v1200 = Instance.new("BillboardGui", v442);
+                        v1200.Name = "NameEsp";
+                        v1200.ExtentsOffset = Vector3.new(0, 1, 0);
+                        v1200.Size = UDim2.new(1, 200, 1, 30);
+                        v1200.Adornee = v442;
+                        v1200.AlwaysOnTop = true;
+                        local v1206 = Instance.new("TextLabel", v1200);
+                        v1206.Font = "GothamBold";
+                        v1206.FontSize = "Size14";
+                        v1206.TextWrapped = true;
+                        v1206.Size = UDim2.new(1, 0, 1, 0);
+                        v1206.TextYAlignment = "Top";
+                        v1206.BackgroundTransparency = 1;
+                        v1206.TextStrokeTransparency = 0.5;
+                        v1206.TextColor3 = Color3.fromRGB(7, 236, 240);
+                    else
+                        v442['NameEsp'].TextLabel.Text = v442.Name .. "   \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v442.Position).Magnitude / 3) .. " Distance" ;
+                    end
+                end
+            elseif v442:FindFirstChild("NameEsp") then
+                v442:FindFirstChild("NameEsp"):Destroy();
+            end
+        end);
+    end
+end
+function isnil(v200)
+    return v200 == nil ;
+end
+local function v20(v201)
+    return math.floor(tonumber(v201) + 0.5);
+end
+spawn(function()
+    while wait() do
+        pcall(function()
+            if MobESP then
+                for v822, v823 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v823:FindFirstChild("HumanoidRootPart") then
+                        if not v823:FindFirstChild("MobEap") then
+                            local v1372 = Instance.new("BillboardGui");
+                            local v1373 = Instance.new("TextLabel");
+                            v1372.Parent = v823;
+                            v1372.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1372.Active = true;
+                            v1372.Name = "MobEap";
+                            v1372.AlwaysOnTop = true;
+                            v1372.LightInfluence = 1;
+                            v1372.Size = UDim2.new(0, 200, 0, 50);
+                            v1372.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1373.Parent = v1372;
+                            v1373.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1373.BackgroundTransparency = 1;
+                            v1373.Size = UDim2.new(0, 200, 0, 50);
+                            v1373.Font = Enum.Font.GothamBold;
+                            v1373.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1373.Text.Size = 35;
+                        end
+                        local v1021 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v823.HumanoidRootPart.Position).Magnitude);
+                        v823.MobEap.TextLabel.Text = v823.Name .. "-" .. v1021 .. " Distance" ;
+                    end
+                end
+            else
+                for v824, v825 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v825:FindFirstChild("MobEap") then
+                        v825.MobEap:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if SeaESP then
+                for v826, v827 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                    if v827:FindFirstChild("HumanoidRootPart") then
+                        if not v827:FindFirstChild("Seaesps") then
+                            local v1391 = Instance.new("BillboardGui");
+                            local v1392 = Instance.new("TextLabel");
+                            v1391.Parent = v827;
+                            v1391.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1391.Active = true;
+                            v1391.Name = "Seaesps";
+                            v1391.AlwaysOnTop = true;
+                            v1391.LightInfluence = 1;
+                            v1391.Size = UDim2.new(0, 200, 0, 50);
+                            v1391.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1392.Parent = v1391;
+                            v1392.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1392.BackgroundTransparency = 1;
+                            v1392.Size = UDim2.new(0, 200, 0, 50);
+                            v1392.Font = Enum.Font.GothamBold;
+                            v1392.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1392.Text.Size = 35;
+                        end
+                        local v1023 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v827.HumanoidRootPart.Position).Magnitude);
+                        v827.Seaesps.TextLabel.Text = v827.Name .. "-" .. v1023 .. " Distance" ;
+                    end
+                end
+            else
+                for v828, v829 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                    if v829:FindFirstChild("Seaesps") then
+                        v829.Seaesps:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if NpcESP then
+                for v830, v831 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+                    if v831:FindFirstChild("HumanoidRootPart") then
+                        if not v831:FindFirstChild("NpcEspes") then
+                            local v1410 = Instance.new("BillboardGui");
+                            local v1411 = Instance.new("TextLabel");
+                            v1410.Parent = v831;
+                            v1410.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1410.Active = true;
+                            v1410.Name = "NpcEspes";
+                            v1410.AlwaysOnTop = true;
+                            v1410.LightInfluence = 1;
+                            v1410.Size = UDim2.new(0, 200, 0, 50);
+                            v1410.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1411.Parent = v1410;
+                            v1411.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1411.BackgroundTransparency = 1;
+                            v1411.Size = UDim2.new(0, 200, 0, 50);
+                            v1411.Font = Enum.Font.GothamBold;
+                            v1411.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1411.Text.Size = 35;
+                        end
+                        local v1025 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v831.HumanoidRootPart.Position).Magnitude);
+                        v831.NpcEspes.TextLabel.Text = v831.Name .. "-" .. v1025 .. " Distance" ;
+                    end
+                end
+            else
+                for v832, v833 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+                    if v833:FindFirstChild("NpcEspes") then
+                        v833.NpcEspes:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+function isnil(v202)
+    return v202 == nil ;
+end
+local function v20(v203)
+    return math.floor(tonumber(v203) + 0.5);
+end
 function UpdateAuraESP()
     for v459, v460 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
         pcall(function()
@@ -1140,6 +1544,54 @@ function UpdateAuraESP()
                 v460:FindFirstChild("NameEsp"):Destroy();
             end
         end);
+    end
+end
+function Tween2(v204)
+    local v205 = (v204.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+    local v206 = 350;
+    if (v205 >= 350) then
+        v206 = 350;
+    end
+    local v207 = TweenInfo.new(v205 / v206, Enum.EasingStyle.Linear);
+    local v208 = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, v207, {
+        CFrame = v204
+    });
+    v208:Play();
+    if _G.CancelTween2 then
+        v208:Cancel();
+    end
+    _G.Clip2 = true;
+    wait(v205 / v206);
+    _G.Clip2 = false;
+end
+function BTPZ(v209)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v209;
+    task.wait();
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v209;
+end
+TweenSpeed = 350;
+function Tween(v211)
+    local v212 = (v211.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+    local v213 = TweenSpeed;
+    if (v212 >= 350) then
+        v213 = TweenSpeed;
+    end
+    local v214 = TweenInfo.new(v212 / v213, Enum.EasingStyle.Linear);
+    local v215 = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, v214, {
+        CFrame = v211
+    });
+    v215:Play();
+    if _G.StopTween then
+        v215:Cancel();
+    end
+end
+function CancelTween(v216)
+    if not v216 then
+        _G.StopTween = true;
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+        _G.StopTween = false;
     end
 end
 function EquipTool(v217)
