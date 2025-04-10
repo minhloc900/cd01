@@ -2004,7 +2004,7 @@ end);
 local v107 = v16.Stats:AddToggle("ToggleMelee", {
     Title = "Nâng Đấm",
     Description = "",
-    Default = true
+    Default = false
 });
 v107:OnChanged(function(v303)
     _G.Auto_Stats_Melee = v303;
