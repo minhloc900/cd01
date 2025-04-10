@@ -1111,7 +1111,6 @@ function CheckBossQuest()
         end
     end
 end
-
 function MaterialMon()
     if (SelectMaterial == "Radioactive Material") then
         MMon = "Factory Staff";
@@ -1495,3 +1494,489 @@ end
 local function v20(v201)
     return math.floor(tonumber(v201) + 0.5);
 end
+function UpdateAuraESP()
+    for v459, v460 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+        pcall(function()
+            if AuraESP then
+                if (v460.Name == "Master of Enhancement") then
+                    if not v460:FindFirstChild("NameEsp") then
+                        local v1286 = Instance.new("BillboardGui", v460);
+                        v1286.Name = "NameEsp";
+                        v1286.ExtentsOffset = Vector3.new(0, 1, 0);
+                        v1286.Size = UDim2.new(1, 200, 1, 30);
+                        v1286.Adornee = v460;
+                        v1286.AlwaysOnTop = true;
+                        local v1292 = Instance.new("TextLabel", v1286);
+                        v1292.Font = "Code";
+                        v1292.FontSize = "Size14";
+                        v1292.TextWrapped = true;
+                        v1292.Size = UDim2.new(1, 0, 1, 0);
+                        v1292.TextYAlignment = "Top";
+                        v1292.BackgroundTransparency = 1;
+                        v1292.TextStrokeTransparency = 0.5;
+                        v1292.TextColor3 = Color3.fromRGB(80, 245, 245);
+                    else
+                        v460['NameEsp'].TextLabel.Text = v460.Name .. "   \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v460.Position).Magnitude / 3) .. " M" ;
+                    end
+                end
+            elseif v460:FindFirstChild("NameEsp") then
+                v460:FindFirstChild("NameEsp"):Destroy();
+            end
+        end);
+    end
+end
+function Tween2(v204)
+    local v205 = (v204.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+    local v206 = 350;
+    if (v205 >= 350) then
+        v206 = 350;
+    end
+    local v207 = TweenInfo.new(v205 / v206, Enum.EasingStyle.Linear);
+    local v208 = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, v207, {
+        CFrame = v204
+    });
+    v208:Play();
+    if _G.CancelTween2 then
+        v208:Cancel();
+    end
+    _G.Clip2 = true;
+    wait(v205 / v206);
+    _G.Clip2 = false;
+end
+function BTPZ(v209)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v209;
+    task.wait();
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v209;
+end
+TweenSpeed = 350;
+function Tween(v211)
+    local v212 = (v211.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+    local v213 = TweenSpeed;
+    if (v212 >= 350) then
+        v213 = TweenSpeed;
+    end
+    local v214 = TweenInfo.new(v212 / v213, Enum.EasingStyle.Linear);
+    local v215 = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, v214, {
+        CFrame = v211
+    });
+    v215:Play();
+    if _G.StopTween then
+        v215:Cancel();
+    end
+end
+function CancelTween(v216)
+    if not v216 then
+        _G.StopTween = true;
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+        _G.StopTween = false;
+    end
+end
+function EquipTool(v217)
+    if game.Players.LocalPlayer.Backpack:FindFirstChild(v217) then
+        local v570 = game.Players.LocalPlayer.Backpack:FindFirstChild(v217);
+        wait();
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(v570);
+    end
+end
+spawn(function()
+    local v218 = getrawmetatable(game);
+    local v219 = v218.__namecall;
+    setreadonly(v218, false);
+    v218.__namecall = newcclosure(function(...)
+        local v465 = getnamecallmethod();
+        local v466 = {
+            ...
+        };
+        if (tostring(v465) == "FireServer") then
+            if (tostring(v466[1]) == "RemoteEvent") then
+                if ((tostring(v466[2]) ~= "true") and (tostring(v466[2]) ~= "false")) then
+                    if _G.UseSkill then
+                        if (type(v466[2]) == "vector") then
+                            v466[2] = PositionSkillMasteryDevilFruit;
+                        else
+                            v466[2] = CFrame.new(PositionSkillMasteryDevilFruit);
+                        end
+                        return v219(unpack(v466));
+                    end
+                end
+            end
+        end
+        return v219(...);
+    end);
+end);
+spawn(function()
+    pcall(function()
+        game:GetService("RunService").Stepped:Connect(function()
+            if (_G.AutoEvoRace or _G.Auto_RainbowHaki or _G.Auto_SkullGuitar or _G.CastleRaid or _G.CollectAzure or _G.TweenToKitsune or _G.Auto_Sea3 or _G.Auto_Sea2 or _G.GhostShip or _G.Ship or _G.Auto_Holy_Torch or _G.TeleportPly or _G.Tweenfruit or _G.Auto_Saber or _G.Auto_PoleV1 or _G.Auto_MusketeerHat or _G.AutoFishCrew or _G.AutoShark or AutoFarmRace or _G.AutoQuestRace or _G.Auto_Warden or Auto_Law or _G.Auto_DualKatana or Auto_Quest_Tushita_1 or Auto_Quest_Tushita_2 or Auto_Quest_Tushita_3 or AutoTushita or _G.AutoHolyTorch or _G.Auto_Buddy or _G.AutoTerrorshark or _G.farmpiranya or Auto_Quest_Yama_3 or _G.Auto_ObservationV2 or Auto_Quest_Yama_2 or Auto_Quest_Yama_1 or _G.AutoNear or _G.Ectoplasm or AutoEvoRace or _G.AutoKillTrial or AutoBartilo or _G.Auto_Regoku or _G.AutoLevel or _G.Clip2 or _G.AutoBone or _G.Auto_Canvander or _G.AutoBoneNoQuest or _G.AutoBoss or _G.Auto_Saw or AutoFarmMasDevilFruit or AutoHallowSycthe or AutoTushita or _G.CakePrince or _G.DoughKing or _G.AutoFarmSwan or _G.AutoEliteor or AutoNextIsland or Musketeer or _G.AutoMaterial or _G.Factory or _G.AutoFrozenDimension or AutoFarmRaceQuest or _G.AutoUpgrade or _G.TweenToFrozenDimension) then
+                for v834, v835 in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
+                    if v835:IsA("BasePart") then
+                        v835.CanCollide = false;
+                    end
+                end
+            end
+        end);
+    end);
+end);
+task.spawn(function()
+    if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+        game.Players.LocalPlayer.Character.Stun.Changed:connect(function()
+            pcall(function()
+                if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+                    game.Players.LocalPlayer.Character.Stun.Value = 0;
+                end
+            end);
+        end);
+    end
+end);
+function GetWeaponInventory(v222)
+    for v469, v470 in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
+        if (type(v470) == "table") then
+            if (v470.Type == "Sword") then
+                if (v470.Name == v222) then
+                    return true;
+                end
+            end
+        end
+    end
+    return false;
+end
+local v21 = game.Players.LocalPlayer;
+function FindEnemiesInRange(v223, v224)
+    local v225 = (v21.Character or v21.CharacterAdded:Wait()):GetPivot().Position;
+    local v226 = nil;
+    for v471, v472 in ipairs(v224) do
+        if (not v472:GetAttribute("IsBoat") and v472:FindFirstChildOfClass("Humanoid") and (v472.Humanoid.Health > 0)) then
+            local v671 = v472:FindFirstChild("Head");
+            if (v671 and ((v225 - v671.Position).Magnitude <= 60)) then
+                if (v472 ~= v21.Character) then
+                    table.insert(v223, {
+                        v472,
+                        v671
+                    });
+                    v226 = v671;
+                end
+            end
+        end
+    end
+    for v473, v474 in ipairs(game.Players:GetPlayers()) do
+        if (v474.Character and (v474 ~= v21)) then
+            local v672 = v474.Character:FindFirstChild("Head");
+            if (v672 and ((v225 - v672.Position).Magnitude <= 60)) then
+                table.insert(v223, {
+                    v474.Character,
+                    v672
+                });
+                v226 = v672;
+            end
+        end
+    end
+    return v226;
+end
+function GetEquippedTool()
+    local v227 = v21.Character;
+    if not v227 then
+        return nil;
+    end
+    for v475, v476 in ipairs(v227:GetChildren()) do
+        if v476:IsA("Tool") then
+            return v476;
+        end
+    end
+    return nil;
+end
+function AttackNoCoolDown()
+    local v228 = {};
+    local v229 = game:GetService("Workspace").Enemies:GetChildren();
+    local v230 = FindEnemiesInRange(v228, v229);
+    if not v230 then
+        return;
+    end
+    local v231 = GetEquippedTool();
+    if not v231 then
+        return;
+    end
+    pcall(function()
+        local v477 = game:GetService("ReplicatedStorage");
+        local v478 = v477:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterAttack");
+        local v479 = v477:WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RE/RegisterHit");
+        if (# v228 > 0) then
+            v478:FireServer(1e-9);
+            v479:FireServer(v230, v228);
+        else
+            task.wait(1e-9);
+        end
+    end);
+end
+Type = 1;
+spawn(function()
+    while wait() do
+        if (Type == 1) then
+            Pos = CFrame.new(0, 40, 0);
+        elseif (Type == 2) then
+            Pos = CFrame.new(- 40, 40, 0);
+        elseif (Type == 3) then
+            Pos = CFrame.new(40, 40, 0);
+        elseif (Type == 4) then
+            Pos = CFrame.new(0, 40, 40);
+        elseif (Type == 5) then
+            Pos = CFrame.new(0, 40, - 40);
+        end
+    end
+end);
+spawn(function()
+    while wait() do
+        Type = 1;
+        wait(0.2);
+        Type = 2;
+        wait(0.2);
+        Type = 3;
+        wait(0.2);
+        Type = 4;
+        wait(0.2);
+        Type = 5;
+        wait(0.2);
+    end
+end);
+function AutoHaki()
+    if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso");
+    end
+end
+function to(v232)
+    repeat
+        wait(_G.Fast_Delay);
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(15);
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v232;
+        task.wait();
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v232;
+    until (v232.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000
+end
+local v22 = Instance.new("ScreenGui");
+local v23 = Instance.new("ImageButton");
+local v24 = Instance.new("UICorner");
+local v25 = Instance.new("ParticleEmitter");
+local v26 = game:GetService("TweenService");
+v22.Parent = game.CoreGui;
+v22.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+v23.Parent = v22;
+v23.BackgroundColor3 = Color3.fromRGB(0, 0, 0);
+v23.BorderSizePixel = 0;
+v23.Position = UDim2.new(0.120833337 - 0.1, 0, 0.0952890813 + 0.01, 0);
+v23.Size = UDim2.new(0, 50, 0, 50);
+v23.Draggable = true;
+v23.Image = "http://www.roblox.com/asset/?id=107900337724954";
+v24.Parent = v23;
+v24.CornerRadius = UDim.new(0, 12);
+v25.Parent = v23;
+v25.LightEmission = 1;
+v25.Size = NumberSequence.new({
+    NumberSequenceKeypoint.new(0, 0.1),
+    NumberSequenceKeypoint.new(1, 0)
+});
+v25.Lifetime = NumberRange.new(0.5, 1);
+v25.Rate = 0;
+v25.Speed = NumberRange.new(5, 10);
+v25.Color = ColorSequence.new(Color3.fromRGB(255, 85, 255), Color3.fromRGB(85, 255, 255));
+local v47 = v26:Create(v23, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+    Rotation = 360
+});
+v23.MouseButton1Down:Connect(function()
+    v25.Rate = 100;
+    task.delay(1, function()
+        v25.Rate = 0;
+    end);
+    v47:Play();
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.End, false, game);
+    v47.Completed:Connect(function()
+        v23.Rotation = 0;
+    end);
+    local v235 = v26:Create(v23, TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
+        Size = UDim2.new(0, 60, 0, 60)
+    });
+    v235:Play();
+    v235.Completed:Connect(function()
+        local v483 = v26:Create(v23, TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
+            Size = UDim2.new(0, 50, 0, 50)
+        });
+        v483:Play();
+    end);
+end);
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy();
+end
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy();
+end
+v16.Home:AddButton({
+    Title = "Telegram",
+    Description = "Giao Lưu(coppy link)share script",
+    Callback = function()
+        setclipboard("https://t.me/+jrjgJajhd-diOTg1");
+    end
+});
+_G.FastAttackStrix_Mode = "Super Fast Attack";
+spawn(function()
+    while wait() do
+        if _G.FastAttackStrix_Mode then
+            pcall(function()
+                if (_G.FastAttackStrix_Mode == "Super Fast Attack") then
+                    _G.Fast_Delay = 1e-9;
+                end
+            end);
+        end
+    end
+end);
+local v48 = v16.Main:AddDropdown("DropdownSelectWeapon", {
+    Title = "Vũ Khí",
+    Description = "",
+    Values = {
+        "Melee",
+        "Sword",
+        "Blox Fruits"
+    },
+    Multi = false,
+    Default = 1
+});
+v48:SetValue("Melee");
+v48:OnChanged(function(v236)
+    ChooseWeapon = v236;
+end);
+task.spawn(function()
+    while wait() do
+        pcall(function()
+            if (ChooseWeapon == "Melee") then
+                for v836, v837 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if (v837.ToolTip == "Melee") then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v837.Name)) then
+                            SelectWeapon = v837.Name;
+                        end
+                    end
+                end
+            elseif (ChooseWeapon == "Sword") then
+                for v1028, v1029 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if (v1029.ToolTip == "Sword") then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v1029.Name)) then
+                            SelectWeapon = v1029.Name;
+                        end
+                    end
+                end
+            elseif (ChooseWeapon == "Blox Fruit") then
+                for v1430, v1431 in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if (v1431.ToolTip == "Blox Fruit") then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v1431.Name)) then
+                            SelectWeapon = v1431.Name;
+                        end
+                    end
+                end
+            end
+        end);
+    end
+end);
+local v49 = v16.Main:AddToggle("ToggleLevel", {
+    Title = "Cày Cấp",
+    Description = "",
+    Default = false
+});
+v49:OnChanged(function(v237)
+    _G.AutoLevel = v237;
+    if (v237 == false) then
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+    end
+end);
+v17.ToggleLevel:SetValue(false);
+spawn(function()
+    while task.wait() do
+        if _G.AutoLevel then
+            pcall(function()
+                CheckLevel();
+                if (not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false)) then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest");
+                    Tween(CFrameQ);
+                    if ((CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5) then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv);
+                    end
+                elseif (string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true)) then
+                    for v1432, v1433 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if (v1433:FindFirstChild("Humanoid") and v1433:FindFirstChild("HumanoidRootPart") and (v1433.Humanoid.Health > 0)) then
+                            if (v1433.Name == Ms) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    bringmob = true;
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    Tween(v1433.HumanoidRootPart.CFrame * Pos);
+                                    v1433.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v1433.HumanoidRootPart.Transparency = 1;
+                                    v1433.Humanoid.JumpPower = 0;
+                                    v1433.Humanoid.WalkSpeed = 0;
+                                    v1433.HumanoidRootPart.CanCollide = false;
+                                    FarmPos = v1433.HumanoidRootPart.CFrame;
+                                    MonFarm = v1433.Name;
+                                until not _G.AutoLevel or not v1433.Parent or (v1433.Humanoid.Health <= 0) or not game:GetService("Workspace").Enemies:FindFirstChild(v1433.Name) or (game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false)
+                                bringmob = false;
+                            end
+                        end
+                    end
+                    for v1434, v1435 in pairs(game:GetService("Workspace")['_WorldOrigin'].EnemySpawns:GetChildren()) do
+                        if string.find(v1435.Name, NameMon) then
+                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v1435.Position).Magnitude >= 10) then
+                                Tween(v1435.HumanoidRootPart.CFrame * Pos);
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
+local v50 = v16.Main:AddToggle("ToggleMobAura", {
+    Title = "Đấm Quái Gần",
+    Description = "",
+    Default = false
+});
+v50:OnChanged(function(v238)
+    _G.AutoNear = v238;
+    if (v238 == false) then
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+    end
+end);
+v17.ToggleMobAura:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.AutoNear then
+            pcall(function()
+                for v838, v839 in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if (v839:FindFirstChild("Humanoid") and v839:FindFirstChild("HumanoidRootPart") and (v839.Humanoid.Health > 0)) then
+                        if v839.Name then
+                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v839:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    bringmob = true;
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    Tween(v839.HumanoidRootPart.CFrame * Pos);
+                                    v839.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v839.HumanoidRootPart.Transparency = 1;
+                                    v839.Humanoid.JumpPower = 0;
+                                    v839.Humanoid.WalkSpeed = 0;
+                                    v839.HumanoidRootPart.CanCollide = false;
+                                    FarmPos = v839.HumanoidRootPart.CFrame;
+                                    MonFarm = v839.Name;
+                                until not _G.AutoNear or not v839.Parent or (v839.Humanoid.Health <= 0) or not game.Workspace.Enemies:FindFirstChild(v839.Name)
+                                bringmob = false;
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
