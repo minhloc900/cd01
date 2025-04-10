@@ -1898,11 +1898,11 @@ end);
 local v49 = v16.Main:AddToggle("ToggleLevel", {
     Title = "Cày Cấp",
     Description = "",
-    Default = false
+    Default = true
 });
 v49:OnChanged(function(v237)
     _G.AutoLevel = v237;
-    if (v237 == true) then
+    if (v237 == false) then
         wait();
         Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
         wait();
