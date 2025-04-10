@@ -88,7 +88,6 @@ function CheckLevel()
         if ((v197 == 1) or (v197 <= 149) or (SelectMonster == "Shanda")) then
             Ms = "Shanda";
             NameMon = "Shanda";
-            CFrameQ = CFrame.new(- 7863.1596679688, 5545.5190429688, - 378.42266845703);
             CFrameMon = CFrame.new(- 7685.1474609375, 5601.0751953125, - 441.38876342773);
         elseif ((v197 == 150) or (v197 <= 174) or (SelectMonster == "Sky Bandit")) then
             Ms = "Sky Bandit";
