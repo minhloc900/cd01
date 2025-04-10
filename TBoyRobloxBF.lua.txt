@@ -1213,37 +1213,7 @@ function MaterialMon()
         SP = "Default";
     end
 end
-function UpdateIslandESP()
-    for v425, v426 in pairs(game:GetService("Workspace")['_WorldOrigin'].Locations:GetChildren()) do
-        pcall(function()
-            if IslandESP then
-                if (v426.Name ~= "Sea") then
-                    if not v426:FindFirstChild("NameEsp") then
-                        local v1130 = Instance.new("BillboardGui", v426);
-                        v1130.Name = "NameEsp";
-                        v1130.ExtentsOffset = Vector3.new(0, 1, 0);
-                        v1130.Size = UDim2.new(1, 200, 1, 30);
-                        v1130.Adornee = v426;
-                        v1130.AlwaysOnTop = true;
-                        local v1136 = Instance.new("TextLabel", v1130);
-                        v1136.Font = "GothamBold";
-                        v1136.FontSize = "Size14";
-                        v1136.TextWrapped = true;
-                        v1136.Size = UDim2.new(1, 0, 1, 0);
-                        v1136.TextYAlignment = "Top";
-                        v1136.BackgroundTransparency = 1;
-                        v1136.TextStrokeTransparency = 0.5;
-                        v1136.TextColor3 = Color3.fromRGB(8, 0, 0);
-                    else
-                        v426['NameEsp'].TextLabel.Text = v426.Name .. "   \n" .. round((game:GetService("Players").LocalPlayer.Character.Head.Position - v426.Position).Magnitude / 3) .. " Distance" ;
-                    end
-                end
-            elseif v426:FindFirstChild("NameEsp") then
-                v426:FindFirstChild("NameEsp"):Destroy();
-            end
-        end);
-    end
-end
+
 function isnil(v198)
     return v198 == nil ;
 end
