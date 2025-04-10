@@ -1494,6 +1494,129 @@ end
 local function v20(v201)
     return math.floor(tonumber(v201) + 0.5);
 end
+spawn(function()
+    while wait() do
+        pcall(function()
+            if MobESP then
+                for v822, v823 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v823:FindFirstChild("HumanoidRootPart") then
+                        if not v823:FindFirstChild("MobEap") then
+                            local v1372 = Instance.new("BillboardGui");
+                            local v1373 = Instance.new("TextLabel");
+                            v1372.Parent = v823;
+                            v1372.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1372.Active = true;
+                            v1372.Name = "MobEap";
+                            v1372.AlwaysOnTop = true;
+                            v1372.LightInfluence = 1;
+                            v1372.Size = UDim2.new(0, 200, 0, 50);
+                            v1372.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1373.Parent = v1372;
+                            v1373.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1373.BackgroundTransparency = 1;
+                            v1373.Size = UDim2.new(0, 200, 0, 50);
+                            v1373.Font = Enum.Font.GothamBold;
+                            v1373.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1373.Text.Size = 35;
+                        end
+                        local v1021 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v823.HumanoidRootPart.Position).Magnitude);
+                        v823.MobEap.TextLabel.Text = v823.Name .. "-" .. v1021 .. " Distance" ;
+                    end
+                end
+            else
+                for v824, v825 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v825:FindFirstChild("MobEap") then
+                        v825.MobEap:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if SeaESP then
+                for v826, v827 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                    if v827:FindFirstChild("HumanoidRootPart") then
+                        if not v827:FindFirstChild("Seaesps") then
+                            local v1391 = Instance.new("BillboardGui");
+                            local v1392 = Instance.new("TextLabel");
+                            v1391.Parent = v827;
+                            v1391.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1391.Active = true;
+                            v1391.Name = "Seaesps";
+                            v1391.AlwaysOnTop = true;
+                            v1391.LightInfluence = 1;
+                            v1391.Size = UDim2.new(0, 200, 0, 50);
+                            v1391.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1392.Parent = v1391;
+                            v1392.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1392.BackgroundTransparency = 1;
+                            v1392.Size = UDim2.new(0, 200, 0, 50);
+                            v1392.Font = Enum.Font.GothamBold;
+                            v1392.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1392.Text.Size = 35;
+                        end
+                        local v1023 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v827.HumanoidRootPart.Position).Magnitude);
+                        v827.Seaesps.TextLabel.Text = v827.Name .. "-" .. v1023 .. " Distance" ;
+                    end
+                end
+            else
+                for v828, v829 in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                    if v829:FindFirstChild("Seaesps") then
+                        v829.Seaesps:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if NpcESP then
+                for v830, v831 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+                    if v831:FindFirstChild("HumanoidRootPart") then
+                        if not v831:FindFirstChild("NpcEspes") then
+                            local v1410 = Instance.new("BillboardGui");
+                            local v1411 = Instance.new("TextLabel");
+                            v1410.Parent = v831;
+                            v1410.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+                            v1410.Active = true;
+                            v1410.Name = "NpcEspes";
+                            v1410.AlwaysOnTop = true;
+                            v1410.LightInfluence = 1;
+                            v1410.Size = UDim2.new(0, 200, 0, 50);
+                            v1410.StudsOffset = Vector3.new(0, 2.5, 0);
+                            v1411.Parent = v1410;
+                            v1411.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
+                            v1411.BackgroundTransparency = 1;
+                            v1411.Size = UDim2.new(0, 200, 0, 50);
+                            v1411.Font = Enum.Font.GothamBold;
+                            v1411.TextColor3 = Color3.fromRGB(7, 236, 240);
+                            v1411.Text.Size = 35;
+                        end
+                        local v1025 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v831.HumanoidRootPart.Position).Magnitude);
+                        v831.NpcEspes.TextLabel.Text = v831.Name .. "-" .. v1025 .. " Distance" ;
+                    end
+                end
+            else
+                for v832, v833 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+                    if v833:FindFirstChild("NpcEspes") then
+                        v833.NpcEspes:Destroy();
+                    end
+                end
+            end
+        end);
+    end
+end);
+function isnil(v202)
+    return v202 == nil ;
+end
+local function v20(v203)
+    return math.floor(tonumber(v203) + 0.5);
+end
 function UpdateAuraESP()
     for v459, v460 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
         pcall(function()
@@ -2517,3 +2640,4 @@ spawn(function()
         end
     end
 end);
+dao cao
