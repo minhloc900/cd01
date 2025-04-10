@@ -86,11 +86,53 @@ function CheckLevel()
     local v197 = game:GetService("Players").LocalPlayer.Data.Level.Value;
     if Sea1 then
         if ((v197 == 1) or (v197 <= 149) or (SelectMonster == "Chief Petty Officer")) then
-            Ms = "Chief Petty Officer";
-            NameMon = "Chief Petty Officer";
-            CFrameQ = CFrame.new(- 5035.49609375, 28.677835464478, 4324.1840820313);
-            CFrameMon = CFrame.new(- 4931.1552734375, 65.793113708496, 4121.8393554688);
-        
+            local v50 = v16.Main:AddToggle("ToggleMobAura", {
+    Title = "Đấm Quái Gần",
+    Description = "",
+    Default = false
+});
+v50:OnChanged(function(v238)
+    _G.AutoNear = v238;
+    if (v238 == false) then
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+    end
+end);
+v17.ToggleMobAura:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.AutoNear then
+            pcall(function()
+                for v838, v839 in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if (v839:FindFirstChild("Humanoid") and v839:FindFirstChild("HumanoidRootPart") and (v839.Humanoid.Health > 0)) then
+                        if v839.Name then
+                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v839:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    bringmob = true;
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    Tween(v839.HumanoidRootPart.CFrame * Pos);
+                                    v839.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v839.HumanoidRootPart.Transparency = 1;
+                                    v839.Humanoid.JumpPower = 0;
+                                    v839.Humanoid.WalkSpeed = 0;
+                                    v839.HumanoidRootPart.CanCollide = false;
+                                    FarmPos = v839.HumanoidRootPart.CFrame;
+                                    MonFarm = v839.Name;
+                                until not _G.AutoNear or not v839.Parent or (v839.Humanoid.Health <= 0) or not game.Workspace.Enemies:FindFirstChild(v839.Name)
+                                bringmob = false;
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
+
         elseif ((v197 == 150) or (v197 <= 174) or (SelectMonster == "Sky Bandit")) then
             Ms = "Sky Bandit";
             NameQuest = "SkyQuest";
