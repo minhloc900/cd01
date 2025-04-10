@@ -2009,3 +2009,4 @@ local v107 = v16.Stats:AddToggle("ToggleMelee", {
 v107:OnChanged(function(v303)
     _G.Auto_Stats_Melee = v303;
 end);
+v17.ToggleMelee:SetValue(false);
