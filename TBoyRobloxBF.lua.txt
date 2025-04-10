@@ -2010,3 +2010,15 @@ v107:OnChanged(function(v303)
     _G.Auto_Stats_Melee = v303;
 end);
 v17.ToggleMelee:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.Auto_Stats_Melee then
+            local v741 = {
+                [1] = "AddPoint",
+                [2] = "Melee",
+                [3] = 3
+            };
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v741));
+        end
+    end
+end);
