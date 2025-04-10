@@ -81,33 +81,23 @@ elseif (v19 == 4442272183) then
     Sea2 = true;
 elseif (v19 == 7449423635) then
     Sea3 = true;
-end
+end  
 function CheckLevel()
-    local v197 = game:GetService("Players").LocalPlayer.Data.Level.Value
+    local v197 = game:GetService("Players").LocalPlayer.Data.Level.Value;
     if Sea1 then
-        if (v197 >= 1 and v197 < 149) then
-            -- Không nhận nhiệm vụ, chỉ đặt mục tiêu là Shanda
-            Ms = "Shanda"
-            NameMon = "Shanda"
-            CFrameMon = CFrame.new(-7685.1474609375, 5601.0751953125, -441.38876342773)
-        elseif SelectMonster == "Shanda" then
-            -- Trong trường hợp đặc biệt vẫn muốn nhận nhiệm vụ thì giữ lại block này nếu cần
-            Ms = "Shanda"
-            NameQuest = "SkyQuest"
-            QuestLv = 1
-            NameMon = "Shanda"
-            CFrameQ = CFrame.new(-7863.1596679688, 5545.5190429688, -378.42266845703)
-            CFrameMon = CFrame.new(-7685.1474609375, 5601.0751953125, -441.38876342773)
-        end
-    end
-end
-
-        elseif ((v197 == 1) or (v197 <= 149) or (SelectMonster == "Shanda")) then
-            Ms = "Shanda";
+        if ((v197 == 1) or (v197 <= 9) or (SelectMonster == "Bandit")) then
+            Ms = "Bandit";
+            NameQuest = "BanditQuest1";
+            QuestLv = 1;
+            NameMon = "Bandit";
+            CFrameQ = CFrame.new(1060.9383544922, 16.455066680908, 1547.7841796875);
+            CFrameMon = CFrame.new(1038.5533447266, 41.296249389648, 1576.5098876953);
+        elseif ((v197 == 10) or (v197 <= 14) or (SelectMonster == "Monkey")) then
+            Ms = "Monkey";
             NameQuest = "JungleQuest";
             QuestLv = 1;
-            NameMon = "Shanda";
-            
+            NameMon = "Monkey";
+            CFrameQ = CFrame.new(- 1601.6553955078, 36.85213470459, 153.38809204102);
             CFrameMon = CFrame.new(- 1448.1446533203, 50.851993560791, 63.60718536377);
         elseif ((v197 == 15) or (v197 <= 29) or (SelectMonster == "Gorilla")) then
             Ms = "Gorilla";
@@ -115,7 +105,7 @@ end
             QuestLv = 2;
             NameMon = "Gorilla";
             CFrameQ = CFrame.new(- 1601.6553955078, 36.85213470459, 153.38809204102);
-            CFrameMon = CFrame.new(- 1142.6488037109, 40.462348937988, - 515.39227294922);
+            CFrameMon = CFrame.new(- 1142.6488037109, 40.462348937988, - 515.39227294922);            
         elseif ((v197 == 30) or (v197 <= 39) or (SelectMonster == "Pirate")) then
             Ms = "Pirate";
             NameQuest = "BuggyQuest1";
