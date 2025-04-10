@@ -1902,7 +1902,7 @@ local v49 = v16.Main:AddToggle("ToggleLevel", {
 });
 v49:OnChanged(function(v237)
     _G.AutoLevel = v237;
-    if (v237 == false) then
+    if (v237 == true) then
         wait();
         Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
         wait();
