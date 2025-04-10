@@ -3,10 +3,10 @@ local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/rel
 local v15 = v14:CreateWindow({
     Title = "XIGUA Hub",
     SubTitle = "by minhloc",
-    TabWidth = 30,
+    TabWidth = 160,
     Theme = "Rose",
     Acrylic = false,
-    Size = UDim2.fromOffset(500, 320),
+    Size = UDim2.fromOffset(300, 120),
     MinimizeKey = Enum.KeyCode.End
 });
 local v16 = {
