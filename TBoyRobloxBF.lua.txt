@@ -1980,3 +1980,299 @@ spawn(function()
         end
     end
 end);
+local v51 = v16.Main:AddToggle("ToggleCastleRaid", {
+    Title = "Đấm Hải Tặc",
+    Description = "",
+    Default = false
+});
+v51:OnChanged(function(v239)
+    _G.CastleRaid = v239;
+end);
+v17.ToggleCastleRaid:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.CastleRaid then
+            pcall(function()
+                local v764 = CFrame.new(- 5496.17432, 313.768921, - 2841.53027, 0.924894512, 7.37058e-9, 0.380223751, 3.588102e-8, 1, - 1.06665446e-7, - 0.380223751, 1.1229711e-7, 0.924894512);
+                if ((CFrame.new(- 5539.3115234375, 313.800537109375, - 2972.372314453125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500) then
+                    for v1030, v1031 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if (_G.CastleRaid and v1031:FindFirstChild("HumanoidRootPart") and v1031:FindFirstChild("Humanoid") and (v1031.Humanoid.Health > 0)) then
+                            if ((v1031.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < 2000) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    v1031.HumanoidRootPart.CanCollide = false;
+                                    v1031.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    Tween(v1031.HumanoidRootPart.CFrame * Pos);
+                                until (v1031.Humanoid.Health <= 0) or not v1031.Parent or not _G.CastleRaid
+                            end
+                        end
+                    end
+                else
+                    Tween(v764);
+                end
+            end);
+        end
+    end
+end);
+local v56 = v16.Main:AddSection("Thông Thạo");
+local v57 = v16.Main:AddDropdown("DropdownMastery", {
+    Title = "Cày Thông Thạo",
+    Description = "",
+    Values = {
+        "Near Mobs"
+    },
+    Multi = false,
+    Default = 1
+});
+v57:SetValue(TypeMastery);
+v57:OnChanged(function(v249)
+    TypeMastery = v249;
+end);
+local v58 = v16.Main:AddToggle("ToggleMasteryFruit", {
+    Title = "Cày Trái",
+    Description = "",
+    Default = false
+});
+v58:OnChanged(function(v250)
+    AutoFarmMasDevilFruit = v250;
+end);
+v17.ToggleMasteryFruit:SetValue(false);
+local v59 = v16.Main:AddSlider("SliderHealt", {
+    Title = "Máu Quái",
+    Description = "",
+    Default = 20,
+    Min = 0,
+    Max = 100,
+    Rounding = 1,
+    Callback = function(v251)
+        KillPercent = v251;
+    end
+});
+v59:OnChanged(function(v252)
+    KillPercent = v252;
+end);
+v59:SetValue(20);
+spawn(function()
+    while task.wait() do
+        if _G.UseSkill then
+            pcall(function()
+                if _G.UseSkill then
+                    for v1032, v1033 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if ((v1033.Name == MonFarm) and v1033:FindFirstChild("Humanoid") and v1033:FindFirstChild("HumanoidRootPart") and (v1033.Humanoid.Health <= ((v1033.Humanoid.MaxHealth * KillPercent) / 100))) then
+                            repeat
+                                game:GetService("RunService").Heartbeat:wait();
+                                EquipTool(game.Players.LocalPlayer.Data.DevilFruit.Value);
+                                Tween(v1033.HumanoidRootPart.CFrame * Pos);
+                                PositionSkillMasteryDevilFruit = v1033.HumanoidRootPart.Position;
+                                if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
+                                    game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).MousePos.Value = PositionSkillMasteryDevilFruit;
+                                    local v1606 = game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).Level.Value;
+                                    if (SkillZ and (v1606 >= 1)) then
+                                        game:service("VirtualInputManager"):SendKeyEvent(true, "Z", false, game);
+                                        wait();
+                                        game:service("VirtualInputManager"):SendKeyEvent(false, "Z", false, game);
+                                    end
+                                    if (SkillX and (v1606 >= 2)) then
+                                        game:service("VirtualInputManager"):SendKeyEvent(true, "X", false, game);
+                                        wait();
+                                        game:service("VirtualInputManager"):SendKeyEvent(false, "X", false, game);
+                                    end
+                                    if (SkillC and (v1606 >= 3)) then
+                                        game:service("VirtualInputManager"):SendKeyEvent(true, "C", false, game);
+                                        wait();
+                                        game:service("VirtualInputManager"):SendKeyEvent(false, "C", false, game);
+                                    end
+                                    if (SkillV and (v1606 >= 4)) then
+                                        game:service("VirtualInputManager"):SendKeyEvent(true, "V", false, game);
+                                        wait();
+                                        game:service("VirtualInputManager"):SendKeyEvent(false, "V", false, game);
+                                    end
+                                    if (SkillF and (v1606 >= 5)) then
+                                        game:GetService("VirtualInputManager"):SendKeyEvent(true, "F", false, game);
+                                        wait();
+                                        game:GetService("VirtualInputManager"):SendKeyEvent(false, "F", false, game);
+                                    end
+                                end
+                            until not AutoFarmMasDevilFruit or not _G.UseSkill or (v1033.Humanoid.Health == 0)
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
+spawn(function()
+    while task.wait(0.1) do
+        if (AutoFarmMasDevilFruit and (TypeMastery == "Near Mobs")) then
+            pcall(function()
+                for v842, v843 in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if (v843.Name and v843:FindFirstChild("Humanoid") and v843:FindFirstChild("HumanoidRootPart")) then
+                        if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v843:FindFirstChild("HumanoidRootPart").Position).Magnitude <= 5000) then
+                            repeat
+                                wait(_G.Fast_Delay);
+                                if (v843.Humanoid.Health <= ((v843.Humanoid.MaxHealth * KillPercent) / 100)) then
+                                    _G.UseSkill = true;
+                                else
+                                    _G.UseSkill = false;
+                                    AutoHaki();
+                                    bringmob = true;
+                                    EquipTool(SelectWeapon);
+                                    Tween(v843.HumanoidRootPart.CFrame * Pos);
+                                    v843.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v843.HumanoidRootPart.Transparency = 1;
+                                    v843.Humanoid.JumpPower = 0;
+                                    v843.Humanoid.WalkSpeed = 0;
+                                    v843.HumanoidRootPart.CanCollide = false;
+                                    FarmPos = v843.HumanoidRootPart.CFrame;
+                                    MonFarm = v843.Name;
+                                    AttackNoCoolDown();
+                                end
+                            until not AutoFarmMasDevilFruit or (not MasteryType == "Near Mobs") or not v843.Parent or (v843.Humanoid.Health == 0)
+                            bringmob = false;
+                            _G.UseSkill = false;
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
+if Sea3 then
+    local v484 = v16.Main:AddSection("Xương");
+    local v485 = v16.Main:AddParagraph({
+        Title = "Xương Trạng Thái",
+        Content = ""
+    });
+    spawn(function()
+        pcall(function()
+            while wait() do
+                local v768 = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check");
+                v485:SetDesc("Mày Có: " .. tostring(v768) .. " Xương");
+            end
+        end);
+    end);
+    local v486 = v16.Main:AddToggle("ToggleBone", {
+        Title = "Cày Xương",
+        Description = "",
+        Default = false
+    });
+    v486:OnChanged(function(v571)
+        _G.AutoBone = v571;
+        if (v571 == false) then
+            wait();
+            Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+            wait();
+        end
+    end);
+    v17.ToggleBone:SetValue(false);
+    local v487 = CFrame.new(- 9515.75, 174.8521728515625, 6079.40625);
+    spawn(function()
+        while wait() do
+            if _G.AutoBone then
+                pcall(function()
+                    local v894 = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text;
+                    if not string.find(v894, "Demonic Soul") then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest");
+                    end
+                    if (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false) then
+                        Tween(v487);
+                        if ((v487.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3) then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", "HauntedQuest2", 1);
+                        end
+                    elseif (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true) then
+                        if (game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy")) then
+                            for v1661, v1662 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if (v1662:FindFirstChild("HumanoidRootPart") and v1662:FindFirstChild("Humanoid") and (v1662.Humanoid.Health > 0)) then
+                                    if ((v1662.Name == "Reborn Skeleton") or (v1662.Name == "Living Zombie") or (v1662.Name == "Demonic Soul") or (v1662.Name == "Posessed Mummy")) then
+                                        if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Demonic Soul") then
+                                            repeat
+                                                wait(_G.Fast_Delay);
+                                                AttackNoCoolDown();
+                                                AutoHaki();
+                                                bringmob = true;
+                                                EquipTool(SelectWeapon);
+                                                Tween(v1662.HumanoidRootPart.CFrame * Pos);
+                                                v1662.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                                v1662.HumanoidRootPart.Transparency = 1;
+                                                v1662.Humanoid.JumpPower = 0;
+                                                v1662.Humanoid.WalkSpeed = 0;
+                                                v1662.HumanoidRootPart.CanCollide = false;
+                                                FarmPos = v1662.HumanoidRootPart.CFrame;
+                                                MonFarm = v1662.Name;
+                                            until not _G.AutoBone or (v1662.Humanoid.Health <= 0) or not v1662.Parent or (game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false)
+                                        else
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest");
+                                            bringmob = false;
+                                        end
+                                    end
+                                end
+                            end
+                        else
+                        end
+                    end
+                end);
+            end
+        end
+    end);
+    local v488 = CFrame.new(- 9515.75, 174.8521728515625, 6079.40625);
+    spawn(function()
+        while wait() do
+            if _G.AutoBoneNoQuest then
+                pcall(function()
+                    Tween(v488);
+                    if ((v488.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3) then
+                    end
+                    if (game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy")) then
+                        for v1436, v1437 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if (v1437:FindFirstChild("HumanoidRootPart") and v1437:FindFirstChild("Humanoid") and (v1437.Humanoid.Health > 0)) then
+                                if ((v1437.Name == "Reborn Skeleton") or (v1437.Name == "Living Zombie") or (v1437.Name == "Demonic Soul") or (v1437.Name == "Posessed Mummy")) then
+                                    repeat
+                                        wait(_G.Fast_Delay);
+                                        AttackNoCoolDown();
+                                        AutoHaki();
+                                        bringmob = true;
+                                        EquipTool(SelectWeapon);
+                                        Tween(v1437.HumanoidRootPart.CFrame * Pos);
+                                        v1437.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                        v1437.HumanoidRootPart.Transparency = 1;
+                                        v1437.Humanoid.JumpPower = 0;
+                                        v1437.Humanoid.WalkSpeed = 0;
+                                        v1437.HumanoidRootPart.CanCollide = false;
+                                        FarmPos = v1437.HumanoidRootPart.CFrame;
+                                        MonFarm = v1437.Name;
+                                    until not _G.AutoBoneNoQuest or (v1437.Humanoid.Health <= 0) or not v1437.Parent
+                                end
+                            end
+                        end
+                    end
+                end);
+            end
+        end
+    end);
+	local v489 = v16.Main:AddToggle("ToggleRandomBone", {
+        Title = "Random Xương",
+        Description = "",
+        Default = false
+    });
+    v489:OnChanged(function(v574)
+        _G.AutoRandomBone = v574;
+    end);
+    v17.ToggleRandomBone:SetValue(false);
+    spawn(function()
+        while wait() do
+            if _G.AutoRandomBone then
+                local v844 = {
+                    [1] = "Bones",
+                    [2] = "Buy",
+                    [3] = 1,
+                    [4] = 1
+                };
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v844));
+            end
+        end
+    end);
+end
+
