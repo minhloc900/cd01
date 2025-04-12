@@ -1531,15 +1531,15 @@ spawn(function()
                                     AutoHaki();
                                     EquipTool(SelectWeapon);
                                     Tween(v839.HumanoidRootPart.CFrame * Pos);
-                                    v839.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v839.HumanoidRootPart.Size = Vector3.new(20, 20, 20);
                                     v839.HumanoidRootPart.Transparency = 1;
                                     v839.Humanoid.JumpPower = 0;
                                     v839.Humanoid.WalkSpeed = 0;
-                                    v839.HumanoidRootPart.CanCollide = true;
+                                    v839.HumanoidRootPart.CanCollide = false;
                                     FarmPos = v839.HumanoidRootPart.CFrame;
                                     MonFarm = v839.Name;
                                 until not _G.AutoNear or not v839.Parent or (v839.Humanoid.Health <= 0) or not game.Workspace.Enemies:FindFirstChild(v839.Name)
-                                bringmob = true;
+                                bringmob = false;
                             end
                         end
                     end
