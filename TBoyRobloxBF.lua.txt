@@ -1197,32 +1197,6 @@ function EquipTool(v217)
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(v570);
     end
 end
-spawn(function()
-    local v218 = getrawmetatable(game);
-    local v219 = v218.__namecall;
-    setreadonly(v218, false);
-    v218.__namecall = newcclosure(function(...)
-        local v465 = getnamecallmethod();
-        local v466 = {
-            ...
-        };
-        if (tostring(v465) == "FireServer") then
-            if (tostring(v466[1]) == "RemoteEvent") then
-                if ((tostring(v466[2]) ~= "true") and (tostring(v466[2]) ~= "false")) then
-                    if _G.UseSkill then
-                        if (type(v466[2]) == "vector") then
-                            v466[2] = PositionSkillMasteryDevilFruit;
-                        else
-                            v466[2] = CFrame.new(PositionSkillMasteryDevilFruit);
-                        end
-                        return v219(unpack(v466));
-                    end
-                end
-            end
-        end
-        return v219(...);
-    end);
-end);
 
 function GetWeaponInventory(v222)
     for v469, v470 in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
