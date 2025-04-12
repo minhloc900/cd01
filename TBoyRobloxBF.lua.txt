@@ -1,5 +1,5 @@
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
-local v15 = Fluent:CreateWindow({
+local v15 = v14:CreateWindow({
     Title = "YTB: MinhLocNhe",
     SubTitle = "Beta Version",
     TabWidth = 160,
