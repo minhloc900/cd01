@@ -1111,45 +1111,7 @@ function CheckBossQuest()
         end
     end
 end
-spawn(function()
-    while wait() do
-        pcall(function()
-            if MobESP then
-                for v822, v823 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if v823:FindFirstChild("HumanoidRootPart") then
-                        if not v823:FindFirstChild("MobEap") then
-                            local v1372 = Instance.new("BillboardGui");
-                            local v1373 = Instance.new("TextLabel");
-                            v1372.Parent = v823;
-                            v1372.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-                            v1372.Active = true;
-                            v1372.Name = "MobEap";
-                            v1372.AlwaysOnTop = true;
-                            v1372.LightInfluence = 1;
-                            v1372.Size = UDim2.new(0, 200, 0, 50);
-                            v1372.StudsOffset = Vector3.new(0, 2.5, 0);
-                            v1373.Parent = v1372;
-                            v1373.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-                            v1373.BackgroundTransparency = 1;
-                            v1373.Size = UDim2.new(0, 200, 0, 50);
-                            v1373.Font = Enum.Font.GothamBold;
-                            v1373.TextColor3 = Color3.fromRGB(7, 236, 240);
-                            v1373.Text.Size = 35;
-                        end
-                        local v1021 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v823.HumanoidRootPart.Position).Magnitude);
-                        v823.MobEap.TextLabel.Text = v823.Name .. "-" .. v1021 .. " Distance" ;
-                    end
-                end
-            else
-                for v824, v825 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if v825:FindFirstChild("MobEap") then
-                        v825.MobEap:Destroy();
-                    end
-                end
-            end
-        end);
-    end
-end);
+
 spawn(function()
     while wait() do
         pcall(function()
