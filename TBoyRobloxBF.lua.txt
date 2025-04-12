@@ -1,57 +1,23 @@
-local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
-local v15 = v14:CreateWindow({
-    Title = "XIGUA Hub",
-    SubTitle = "by minhloc",
-    TabWidth = 100,
+local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local v15 = Fluent:CreateWindow({
+    Title = "YTB: MinhLocNhe",
+    SubTitle = "Beta Version",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(530, 350),
+    Acrylic = true,
     Theme = "Rose",
-    Acrylic = false,
-    Size = UDim2.fromOffset(500, 320),
     MinimizeKey = Enum.KeyCode.End
 });
-local v16 = {
-    Home = v15:AddTab({
-        Title = "Thông Tin"
-    }),
-    Main = v15:AddTab({
-        Title = "Cày"
-    }),
-    Sea = v15:AddTab({
-        Title = "Sự Kiện"
-    }),
-    ITM = v15:AddTab({
-        Title = "Vật Phẩm"
-    }),
-    Setting = v15:AddTab({
-        Title = "Cài Đặt"
-    }),
-    Status = v15:AddTab({
-        Title = "Máy Chủ"
-    }),
-    Stats = v15:AddTab({
-        Title = "Chỉ Số"
-    }),
-    Player = v15:AddTab({
-        Title = "Người Chơi"
-    }),
-    Teleport = v15:AddTab({
-        Title = "Dịch Chuyển"
-    }),
-    Visual = v15:AddTab({
-        Title = "Giả"
-    }),
-    Fruit = v15:AddTab({
-        Title = "Trái"
-    }),
-    Raid = v15:AddTab({
-        Title = "Tập Kích"
-    }),
-    Race = v15:AddTab({
-        Title = "Tộc"
-    }),
-    Shop = v15:AddTab({
-        Title = "Cửa Hàng"
-    }),
-    Misc = v15:AddTab({
-        Title = "Khác"
-    })
-};
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "" }),
+    Raid = Window:AddTab({ Title = "Raid", Icon = "" }),
+    Race = Window:AddTab({ Title = "Race V4", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "" }),
+	Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
+    Hop = Window:AddTab({ Title = "Hop", Icon = "" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "" }),
+}
