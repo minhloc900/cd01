@@ -1531,8 +1531,8 @@ spawn(function()
                                     AutoHaki();
                                     EquipTool(SelectWeapon);
                                     Tween(v839.HumanoidRootPart.CFrame * Pos);
-                                    v839.HumanoidRootPart.Size = Vector3.new(0, 0, 2);
-                                    v839.HumanoidRootPart.Transparency = 1;
+                                    v839.HumanoidRootPart.Size = Vector3.new(0, 0, 0);
+                                    v839.HumanoidRootPart.Transparency = 0;
                                     v839.Humanoid.JumpPower = 0;
                                     v839.Humanoid.WalkSpeed = 0;
                                     v839.HumanoidRootPart.CanCollide = false;
