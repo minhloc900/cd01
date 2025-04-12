@@ -9,8 +9,9 @@ local v15 = v14:CreateWindow({
     MinimizeKey = Enum.KeyCode.End
 });
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "" }),
-    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
+    Home = v15:AddTab({Title = "Thông Tin"}),
+    Main = v15:AddTab({ Title = "Main", Icon = "" }),
+    Stats = v15:AddTab({ Title = "Stats", Icon = "" }),
     Player = Window:AddTab({ Title = "Player", Icon = "" }),
     Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
     Fruit = Window:AddTab({ Title = "Fruit", Icon = "" }),
