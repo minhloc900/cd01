@@ -1151,51 +1151,7 @@ spawn(function()
         end);
     end
 end);
-spawn(function()
-    while wait() do
-        pcall(function()
-            if NpcESP then
-                for v830, v831 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
-                    if v831:FindFirstChild("HumanoidRootPart") then
-                        if not v831:FindFirstChild("NpcEspes") then
-                            local v1410 = Instance.new("BillboardGui");
-                            local v1411 = Instance.new("TextLabel");
-                            v1410.Parent = v831;
-                            v1410.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-                            v1410.Active = true;
-                            v1410.Name = "NpcEspes";
-                            v1410.AlwaysOnTop = true;
-                            v1410.LightInfluence = 1;
-                            v1410.Size = UDim2.new(0, 200, 0, 50);
-                            v1410.StudsOffset = Vector3.new(0, 2.5, 0);
-                            v1411.Parent = v1410;
-                            v1411.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-                            v1411.BackgroundTransparency = 1;
-                            v1411.Size = UDim2.new(0, 200, 0, 50);
-                            v1411.Font = Enum.Font.GothamBold;
-                            v1411.TextColor3 = Color3.fromRGB(7, 236, 240);
-                            v1411.Text.Size = 35;
-                        end
-                        local v1025 = math.floor((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v831.HumanoidRootPart.Position).Magnitude);
-                        v831.NpcEspes.TextLabel.Text = v831.Name .. "-" .. v1025 .. " Distance" ;
-                    end
-                end
-            else
-                for v832, v833 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
-                    if v833:FindFirstChild("NpcEspes") then
-                        v833.NpcEspes:Destroy();
-                    end
-                end
-            end
-        end);
-    end
-end);
-function isnil(v202)
-    return v202 == nil ;
-end
-local function v20(v203)
-    return math.floor(tonumber(v203) + 0.5);
-end
+
 function UpdateAuraESP()
     for v459, v460 in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
         pcall(function()
