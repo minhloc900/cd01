@@ -8,17 +8,17 @@ local v15 = v14:CreateWindow({
     Theme = "Rose",
     MinimizeKey = Enum.KeyCode.End
 });
-local v16 = {
+local Tabs = {
     Home = v15:AddTab({Title = "Thông Tin"}),
-    Main = v15:AddTab({ Title = "Cày", Icon = "" }),
-    Stats = v15:AddTab({ Title = "Chỉ số", Icon = "" }),
-    Player = v15:AddTab({ Title = "Người chơi", Icon = "" }),
-    Teleport = v15:AddTab({ Title = Đảo", Icon = "" }),
-    Fruit = v15:AddTab({ Title = "Trái", Icon = "" }),
-    Raid = v15:AddTab({ Title = "Tập kích", Icon = "" }),
-    Race = v15:AddTab({ Title = "Tộc V4", Icon = "" }),
-    Shop = v15:AddTab({ Title = "Cửa hàng", Icon = "" }),
-	Misc =v15:AddTab({ Title = "khác", Icon = "" }),
-    Hop = v15:AddTab({ Title = "Hop", Icon = "" }),
-    Setting = v15:AddTab({ Title = "Cài đặt", Icon = "" }),
+    Main = v15:AddTab({ Title = "Cày"}),
+    Stats = v15:AddTab({ Title = "Chỉ số" }),
+    Player = v15:AddTab({ Title = "Người chơi" }),
+    Teleport = v15:AddTab({ Title = Đảo" }),
+    Fruit = v15:AddTab({ Title = "Trái" }),
+    Raid = v15:AddTab({ Title = "Tập kích" }),
+    Race = v15:AddTab({ Title = "Tộc V4"  }),
+    Shop = v15:AddTab({ Title = "Cửa hàng"  }),
+	Misc =v15:AddTab({ Title = "khác }),
+    Hop = v15:AddTab({ Title = "Hop" }),
+    Setting = v15:AddTab({ Title = "Cài đặt" }),
 }
