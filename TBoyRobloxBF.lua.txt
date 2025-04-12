@@ -1113,53 +1113,7 @@ function CheckBossQuest()
 end
 
 
-function isnil(v198)
-    return v198 == nil ;
-end
-local function v20(v199)
-    return math.floor(tonumber(v199) + 0.5);
-end
-Number = math.random(1, 1000000);
-function UpdatePlayerChams()
-    for v427, v428 in pairs(game:GetService("Players"):GetChildren()) do
-        pcall(function()
-            if not isnil(v428.Character) then
-                if ESPPlayer then
-                    if (not isnil(v428.Character.Head) and not v428.Character.Head:FindFirstChild("NameEsp" .. Number)) then
-                        local v1146 = Instance.new("BillboardGui", v428.Character.Head);
-                        v1146.Name = "NameEsp" .. Number ;
-                        v1146.ExtentsOffset = Vector3.new(0, 1, 0);
-                        v1146.Size = UDim2.new(1, 200, 1, 30);
-                        v1146.Adornee = v428.Character.Head;
-                        v1146.AlwaysOnTop = true;
-                        local v1153 = Instance.new("TextLabel", v1146);
-                        v1153.Font = Enum.Font.GothamSemibold;
-                        v1153.FontSize = "Size10";
-                        v1153.TextWrapped = true;
-                        v1153.Text = v428.Name .. " \n" .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v428.Character.Head.Position).Magnitude / 3) .. " Distance" ;
-                        v1153.Size = UDim2.new(1, 0, 1, 0);
-                        v1153.TextYAlignment = "Top";
-                        v1153.BackgroundTransparency = 1;
-                        v1153.TextStrokeTransparency = 0.5;
-                        if (v428.Team == game.Players.LocalPlayer.Team) then
-                            v1153.TextColor3 = Color3.new(0, 0, 254);
-                        else
-                            v1153.TextColor3 = Color3.new(255, 0, 0);
-                        end
-                    else
-                        v428.Character.Head["NameEsp" .. Number ].TextLabel.Text = v428.Name .. " | " .. v20((game:GetService("Players").LocalPlayer.Character.Head.Position - v428.Character.Head.Position).Magnitude / 3) .. " Distance\nHealth : " .. v20((v428.Character.Humanoid.Health * 100) / v428.Character.Humanoid.MaxHealth) .. "%" ;
-                    end
-                elseif v428.Character.Head:FindFirstChild("NameEsp" .. Number) then
-                    v428.Character.Head:FindFirstChild("NameEsp" .. Number):Destroy();
-                end
-            end
-        end);
-    end
-end
 
-function isnil(v200)
-    return v200 == nil ;
-end
 local function v20(v201)
     return math.floor(tonumber(v201) + 0.5);
 end
