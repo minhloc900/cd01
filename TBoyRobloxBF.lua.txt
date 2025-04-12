@@ -8,3 +8,16 @@ local v15 = v14:CreateWindow({
     Size = UDim2.fromOffset(500, 320),
     MinimizeKey = Enum.KeyCode.End
 });
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "" }),
+    Teleport = Window:AddTab({ Title = "Island", Icon = "" }),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "" }),
+    Raid = Window:AddTab({ Title = "Raid", Icon = "" }),
+    Race = Window:AddTab({ Title = "Race V4", Icon = "" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "" }),
+	Misc = Window:AddTab({ Title = "Misc", Icon = "" }),
+    Hop = Window:AddTab({ Title = "Hop", Icon = "" }),
+    Setting = Window:AddTab({ Title = "Setting", Icon = "" }),
+}
