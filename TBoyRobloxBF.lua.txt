@@ -8,7 +8,7 @@ local v15 = v14:CreateWindow({
     Theme = "Rose",
     MinimizeKey = Enum.KeyCode.End
 });
-local Tabs = {
+local v16 = {
     Home = v15:AddTab({Title = "Thông Tin"}),
     Main = v15:AddTab({ Title = "Cày", Icon = "" }),
     Stats = v15:AddTab({ Title = "Chỉ số", Icon = "" }),
