@@ -1217,7 +1217,7 @@ function FindEnemiesInRange(v223, v224)
     for v471, v472 in ipairs(v224) do
         if (not v472:GetAttribute("IsBoat") and v472:FindFirstChildOfClass("Humanoid") and (v472.Humanoid.Health > 0)) then
             local v671 = v472:FindFirstChild("Head");
-            if (v671 and ((v225 - v671.Position).Magnitude <= 60)) then
+            if (v671 and ((v225 - v671.Position).Magnitude <= 6)) then
                 if (v472 ~= v21.Character) then
                     table.insert(v223, {
                         v472,
@@ -1242,7 +1242,18 @@ function FindEnemiesInRange(v223, v224)
     end
     return v226;
 end
-
+function GetEquippedTool()
+    local v227 = v21.Character;
+    if not v227 then
+        return nil;
+    end
+    for v475, v476 in ipairs(v227:GetChildren()) do
+        if v476:IsA("Tool") then
+            return v476;
+        end
+    end
+    return nil;
+end
 function AttackNoCoolDown()
     local v228 = {};
     local v229 = game:GetService("Workspace").Enemies:GetChildren();
