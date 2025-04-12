@@ -1111,12 +1111,6 @@ function CheckBossQuest()
         end
     end
 end
-
-
-
-local function v20(v201)
-    return math.floor(tonumber(v201) + 0.5);
-end
 spawn(function()
     while wait() do
         pcall(function()
