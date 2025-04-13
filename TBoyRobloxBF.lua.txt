@@ -1,6 +1,6 @@
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "XIGUA Hub  ",
+    Title = "XIGUA Hub v2  ",
     SubTitle = "by minhloc",
     TabWidth = 160,
     Theme = "Rose",
@@ -2756,7 +2756,7 @@ if Sea3 then
             end
         end
     end);
-local v528 = v16.Main:AddSection("Elite");
+    local v528 = v16.Main:AddSection("Elite");
     local v529 = v16.Main:AddParagraph({
         Title = "Trạng Thái Elite",
         Content = ""
@@ -2891,3 +2891,189 @@ if Sea3 then
         end
     end
 end
+local v66 = v16.Sea:AddToggle("ToggleTpAdvanced", {
+    Title = "Bay Đến Advanced Fruit Dealer",
+    Description = "",
+    Default = false
+});
+v66:OnChanged(function(v257)
+    _G.AutoTpAdvanced = v257;
+end);
+spawn(function()
+    while wait() do
+        if _G.AutoTpAdvanced then
+            local v730 = game.ReplicatedStorage.NPCs:FindFirstChild("Advanced Fruit Dealer");
+            if (v730 and v730:IsA("Model")) then
+                local v856 = v730.PrimaryPart and v730.PrimaryPart.Position ;
+                if v856 then
+                    Tween2(CFrame.new(v856));
+                end
+            end
+        end
+    end
+end);
+local v67 = v16.Sea:AddToggle("ToggleTweenGear", {
+    Title = "Bay Đến Bánh Răng",
+    Description = "",
+    Default = false
+});
+v67:OnChanged(function(v258)
+    _G.TweenToGear = v258;
+end);
+v17.ToggleTweenGear:SetValue(false);
+spawn(function()
+    pcall(function()
+        while wait() do
+            if _G.TweenToGear then
+                if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
+                    for v1040, v1041 in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do
+                        if v1041:IsA("MeshPart") then
+                            if (v1041.Material == Enum.Material.Neon) then
+                                Tween2(v1041.CFrame);
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end);
+end);
+local v68 = v16.Sea:AddToggle("Togglelockmoon", {
+    Title = "Nhìn Trăng Và Dùng Tộc",
+    Description = "",
+    Default = false
+});
+v68:OnChanged(function(v259)
+    _G.AutoLockMoon = v259;
+end);
+v17.Togglelockmoon:SetValue(false);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoLockMoon then
+                local v794 = game.Lighting:GetMoonDirection();
+                local v795 = game.Workspace.CurrentCamera.CFrame.p + (v794 * 100) ;
+                game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.p, v795);
+            end
+        end);
+    end
+end);
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoLockMoon then
+                game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility");
+            end
+        end);
+    end
+end);
+local v69 = v16.ITM:AddToggle("ToggleAutoSaber", {
+    Title = "Saber",
+    Description = "",
+    Default = false
+});
+v69:OnChanged(function(v260)
+    _G.Auto_Saber = v260;
+end);
+v17.ToggleAutoSaber:SetValue(false);
+spawn(function()
+    while task.wait() do
+        if (_G.Auto_Saber and (game.Players.LocalPlayer.Data.Level.Value >= 200)) then
+            pcall(function()
+                if (game:GetService("Workspace").Map.Jungle.Final.Part.Transparency == 0) then
+                    if (game:GetService("Workspace").Map.Jungle.QuestPlates.Door.Transparency == 0) then
+                        if ((CFrame.new(- 1612.55884, 36.9774132, 148.719543, 0.37091279, 3.071715e-9, - 0.928667724, 3.970995e-8, 1, 1.9167935e-8, 0.928667724, - 4.398698e-8, 0.37091279).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100) then
+                            Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+                            wait(1);
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate1.Button.CFrame;
+                            wait(1);
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate2.Button.CFrame;
+                            wait(1);
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate3.Button.CFrame;
+                            wait(1);
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate4.Button.CFrame;
+                            wait(1);
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.Jungle.QuestPlates.Plate5.Button.CFrame;
+                            wait(1);
+                        else
+                            Tween(CFrame.new(- 1612.55884, 36.9774132, 148.719543, 0.37091279, 3.071715e-9, - 0.928667724, 3.970995e-8, 1, 1.9167935e-8, 0.928667724, - 4.398698e-8, 0.37091279));
+                        end
+                    elseif (game:GetService("Workspace").Map.Desert.Burn.Part.Transparency == 0) then
+                        if (game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Torch") or game.Players.LocalPlayer.Character:FindFirstChild("Torch")) then
+                            EquipTool("Torch");
+                            Tween(CFrame.new(1114.61475, 5.04679728, 4350.22803, - 0.648466587, - 1.2879909e-9, 0.761243105, - 5.706529e-10, 1, 1.2058454e-9, - 0.761243105, 3.4754488e-10, - 0.648466587));
+                        else
+                            Tween(CFrame.new(- 1610.00757, 11.5049858, 164.001587, 0.984807551, - 0.167722285, - 0.0449818149, 0.17364943, 0.951244235, 0.254912198, 0.00003423728, - 0.258850515, 0.965917408));
+                        end
+                    elseif (game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "SickMan") ~= 0) then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "GetCup");
+                        wait(0.5);
+                        EquipTool("Cup");
+                        wait(0.5);
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "FillCup", game:GetService("Players").LocalPlayer.Character.Cup);
+                        wait(0);
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "SickMan");
+                    elseif (game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "RichSon") == nil) then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "RichSon");
+                    elseif (game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "RichSon") == 0) then
+                        if (game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader") or game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader")) then
+                            Tween(CFrame.new(- 2967.59521, - 4.91089821, 5328.70703, 0.342208564, - 0.0227849055, 0.939347804, 0.0251603816, 0.999569714, 0.0150796166, - 0.939287126, 0.0184739735, 0.342634559));
+                            for v1799, v1800 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if (v1800.Name == "Mob Leader") then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Mob Leader [Lv. 120] [Boss]") then
+                                        if (v1800:FindFirstChild("Humanoid") and v1800:FindFirstChild("HumanoidRootPart") and (v1800.Humanoid.Health > 0)) then
+                                            repeat
+                                                task.wait(_G.Fast_Delay);
+                                                AutoHaki();
+                                                EquipTool(SelectWeapon);
+                                                v1800.HumanoidRootPart.CanCollide = false;
+                                                v1800.Humanoid.WalkSpeed = 0;
+                                                v1800.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                                Tween(v1800.HumanoidRootPart.CFrame * Pos);
+                                                AttackNoCoolDown();
+                                            until (v1800.Humanoid.Health <= 0) or not _G.Auto_Saber
+                                        end
+                                    end
+                                    if game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader") then
+                                        Tween(game:GetService("ReplicatedStorage"):FindFirstChild("Mob Leader").HumanoidRootPart.CFrame * CFrame.new(2, 20, 2));
+                                    end
+                                end
+                            end
+                        end
+                    elseif (game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "RichSon") == 1) then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "RichSon");
+                        wait(0.5);
+                        EquipTool("Relic");
+                        wait(0.5);
+                        Tween(CFrame.new(- 1404.91504, 29.9773273, 3.80598116, 0.876514494, 5.6690688e-9, 0.481375456, 2.53852e-8, 1, - 5.799956e-8, - 0.481375456, 6.3057264e-8, 0.876514494));
+                    end
+                elseif (game:GetService("Workspace").Enemies:FindFirstChild("Saber Expert") or game:GetService("ReplicatedStorage"):FindFirstChild("Saber Expert")) then
+                    for v1460, v1461 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if (v1461:FindFirstChild("Humanoid") and v1461:FindFirstChild("HumanoidRootPart") and (v1461.Humanoid.Health > 0)) then
+                            if (v1461.Name == "Saber Expert") then
+                                repeat
+                                    task.wait(_G.Fast_Delay);
+                                    EquipTool(SelectWeapon);
+                                    Tween(v1461.HumanoidRootPart.CFrame * Pos);
+                                    v1461.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v1461.HumanoidRootPart.Transparency = 1;
+                                    v1461.Humanoid.JumpPower = 0;
+                                    v1461.Humanoid.WalkSpeed = 0;
+                                    v1461.HumanoidRootPart.CanCollide = false;
+                                    bringmob = true;
+                                    FarmPos = v1461.HumanoidRootPart.CFrame;
+                                    MonFarm = v1461.Name;
+                                    AttackNoCoolDown();
+                                until (v1461.Humanoid.Health <= 0) or not _G.Auto_Saber
+                                bringmob = true;
+                                if (v1461.Humanoid.Health <= 0) then
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ProQuestProgress", "PlaceRelic");
+                                end
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
