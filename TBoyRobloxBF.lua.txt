@@ -1,6 +1,6 @@
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "XIGUA Hub  ",
+    Title = "XIGUA Hub v2 ",
     SubTitle = "by minhloc",
     TabWidth = 160,
     Theme = "Rose",
@@ -1602,6 +1602,56 @@ if Sea3 then
                 };
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(v844));
             end
+        end
+    end);
+end
+if Sea2 then
+    local v496 = v16.Main:AddSection("Ectoplasm Farm");
+    local v497 = v16.Main:AddToggle("ToggleVatChatKiDi", {
+        Title = "Auto Farm Ectoplasm",
+        Description = "",
+        Default = false
+    });
+    v497:OnChanged(function(v578)
+        _G.Ectoplasm = v578;
+    end);
+    v17.ToggleVatChatKiDi:SetValue(false);
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if _G.Ectoplasm then
+                    if (game:GetService("Workspace").Enemies:FindFirstChild("Ship Deckhand") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Engineer") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Steward") or game:GetService("Workspace").Enemies:FindFirstChild("Ship Officer")) then
+                        for v1442, v1443 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if ((v1443.Name == "Ship Steward") or (v1443.Name == "Ship Engineer") or (v1443.Name == "Ship Deckhand") or ((v1443.Name == "Ship Officer") and v1443:FindFirstChild("Humanoid"))) then
+                                if (v1443.Humanoid.Health > 0) then
+                                    repeat
+                                        wait(_G.Fast_Delay);
+                                        AttackNoCoolDown();
+                                        AutoHaki();
+                                        bringmob = true;
+                                        EquipTool(SelectWeapon);
+                                        Tween(v1443.HumanoidRootPart.CFrame * Pos);
+                                        v1443.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                        v1443.HumanoidRootPart.Transparency = 1;
+                                        v1443.Humanoid.JumpPower = 0;
+                                        v1443.Humanoid.WalkSpeed = 0;
+                                        v1443.HumanoidRootPart.CanCollide = false;
+                                        FarmPos = v1443.HumanoidRootPart.CFrame;
+                                        MonFarm = v1443.Name;
+                                    until (_G.Ectoplasm == false) or not v1443.Parent or (v1443.Humanoid.Health == 0) or not game:GetService("Workspace").Enemies:FindFirstChild(v1443.Name)
+                                    bringmob = false;
+                                end
+                            end
+                        end
+                    else
+                        local v1334 = (Vector3.new(904.4072265625, 181.05767822266, 33341.38671875) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+                        if (v1334 > 20000) then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(923.21252441406, 126.9760055542, 32852.83203125));
+                        end
+                        Tween(CFrame.new(904.4072265625, 181.05767822266, 33341.38671875));
+                    end
+                end
+            end);
         end
     end);
 end
