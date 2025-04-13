@@ -1,6 +1,6 @@
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
-    Title = "XIGUA Hub  ",
+    Title = "XIGUA Hub v2 ",
     SubTitle = "by minhloc",
     TabWidth = 160,
     Theme = "Rose",
@@ -1655,3 +1655,195 @@ if Sea2 then
         end
     end);
 end
+local v60 = v16.Main:AddSection("Trùm");
+if Sea1 then
+    tableBoss = {
+        "The Gorilla King",
+        "Bobby",
+        "Yeti",
+        "Mob Leader",
+        "Vice Admiral",
+        "Warden",
+        "Chief Warden",
+        "Swan",
+        "Magma Admiral",
+        "Fishman Lord",
+        "Wysper",
+        "Thunder God",
+        "Cyborg",
+        "Saber Expert"
+    };
+elseif Sea2 then
+    tableBoss = {
+        "Diamond",
+        "Jeremy",
+        "Fajita",
+        "Don Swan",
+        "Smoke Admiral",
+        "Cursed Captain",
+        "Darkbeard",
+        "Order",
+        "Awakened Ice Admiral",
+        "Tide Keeper"
+    };
+elseif Sea3 then
+    tableBoss = {
+        "Stone",
+        "Hydra Leader",
+        "Kilo Admiral",
+        "Captain Elephant",
+        "Beautiful Pirate",
+        "rip_indra True Form",
+        "Longma",
+        "Soul Reaper",
+        "Cake Queen"
+    };
+end
+local v61 = v16.Main:AddDropdown("DropdownBoss", {
+    Title = "Chọn Trùm",
+    Description = "",
+    Values = tableBoss,
+    Multi = false,
+    Default = 1
+});
+v61:SetValue(_G.SelectBoss);
+v61:OnChanged(function(v253)
+    _G.SelectBoss = v253;
+end);
+local v62 = v16.Main:AddToggle("ToggleAutoFarmBoss", {
+    Title = "Đấm Trùm",
+    Description = "",
+    Default = false
+});
+v62:OnChanged(function(v254)
+    _G.AutoBoss = v254;
+end);
+v17.ToggleAutoFarmBoss:SetValue(false);
+spawn(function()
+    while wait() do
+        if _G.AutoBoss then
+            pcall(function()
+                if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+                    for v1034, v1035 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if (v1035.Name == _G.SelectBoss) then
+                            if (v1035:FindFirstChild("Humanoid") and v1035:FindFirstChild("HumanoidRootPart") and (v1035.Humanoid.Health > 0)) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    AutoHaki();
+                                    EquipTool(SelectWeapon);
+                                    v1035.HumanoidRootPart.CanCollide = false;
+                                    v1035.Humanoid.WalkSpeed = 0;
+                                    v1035.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    Tween(v1035.HumanoidRootPart.CFrame * Pos);
+                                    sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge);
+                                until not _G.AutoBoss or not v1035.Parent or (v1035.Humanoid.Health <= 0)
+                            end
+                        end
+                    end
+                elseif game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+                    Tween(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(5, 10, 7));
+                end
+            end);
+        end
+    end
+end);
+local v63 = v16.Main:AddSection("Nguyên Liệu");
+if Sea1 then
+    MaterialList = {
+        "Scrap Metal",
+        "Leather",
+        "Angel Wings",
+        "Magma Ore",
+        "Fish Tail"
+    };
+elseif Sea2 then
+    MaterialList = {
+        "Scrap Metal",
+        "Leather",
+        "Radioactive Material",
+        "Mystic Droplet",
+        "Magma Ore",
+        "Vampire Fang"
+    };
+elseif Sea3 then
+    MaterialList = {
+        "Scrap Metal",
+        "Leather",
+        "Demonic Wisp",
+        "Conjured Cocoa",
+        "Dragon Scale",
+        "Gunpowder",
+        "Fish Tail",
+        "Mini Tusk",
+        "Hydra Enforcer",
+        "Venomous Assailant"
+    };
+end
+local v64 = v16.Main:AddDropdown("DropdownMaterial", {
+    Title = "Chọn Nguyên Liệu",
+    Description = "",
+    Values = MaterialList,
+    Multi = false,
+    Default = 1
+});
+v64:SetValue(SelectMaterial);
+v64:OnChanged(function(v255)
+    SelectMaterial = v255;
+end);
+local v65 = v16.Main:AddToggle("ToggleMaterial", {
+    Title = "Cày Nguyên Liệu",
+    Description = "",
+    Default = false
+});
+v65:OnChanged(function(v256)
+    _G.AutoMaterial = v256;
+    if (v256 == false) then
+        wait();
+        Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame);
+        wait();
+    end
+end);
+v17.ToggleMaterial:SetValue(false);
+spawn(function()
+    while task.wait() do
+        if _G.AutoMaterial then
+            pcall(function()
+                MaterialMon(SelectMaterial);
+                Tween(MPos);
+                if game:GetService("Workspace").Enemies:FindFirstChild(MMon) then
+                    for v1036, v1037 in pairs(game.Workspace.Enemies:GetChildren()) do
+                        if (v1037:FindFirstChild("Humanoid") and v1037:FindFirstChild("HumanoidRootPart") and (v1037.Humanoid.Health > 0)) then
+                            if (v1037.Name == MMon) then
+                                repeat
+                                    wait(_G.Fast_Delay);
+                                    AttackNoCoolDown();
+                                    AutoHaki();
+                                    bringmob = true;
+                                    EquipTool(SelectWeapon);
+                                    Tween(v1037.HumanoidRootPart.CFrame * Pos);
+                                    v1037.HumanoidRootPart.Size = Vector3.new(60, 60, 60);
+                                    v1037.HumanoidRootPart.Transparency = 1;
+                                    v1037.Humanoid.JumpPower = 0;
+                                    v1037.Humanoid.WalkSpeed = 0;
+                                    v1037.HumanoidRootPart.CanCollide = false;
+                                    FarmPos = v1037.HumanoidRootPart.CFrame;
+                                    MonFarm = v1037.Name;
+                                until not _G.AutoMaterial or not v1037.Parent or (v1037.Humanoid.Health <= 0)
+                                bringmob = false;
+                            end
+                        end
+                    end
+                else
+                    for v1038, v1039 in pairs(game:GetService("Workspace")['_WorldOrigin'].EnemySpawns:GetChildren()) do
+                        if string.find(v1039.Name, Mon) then
+                            if ((game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v1039.Position).Magnitude >= 10) then
+                                Tween(v1039.HumanoidRootPart.CFrame * Pos);
+                            end
+                        end
+                    end
+                end
+            end);
+        end
+    end
+end);
