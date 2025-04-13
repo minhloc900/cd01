@@ -1217,7 +1217,7 @@ end
 if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy();
 end
-v16.Home:AddButton({
+v16.Main:AddButton({
     Title = "Telegram",
     Description = "Giao Lưu(coppy link)share script",
     Callback = function()
