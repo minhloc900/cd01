@@ -1,21 +1,3 @@
--- Chọn team Hải Tặc trước
-task.spawn(function()
-repeat wait() until game:IsLoaded()
-wait(0,4) -- Chờ game load ổn định
-
-local player = game:GetService("Players").LocalPlayer
-local replicatedStorage = game:GetService("ReplicatedStorage")
-
-    -- Gửi yêu cầu chọn phe Hải Tặc
-pcall(function()
-replicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
-end)
-
-    -- Đợi đến khi team đã đổi thành "Pirates"
-repeat wait() until player.Team and player.Team.Name == "Pirates"
-    
-    -- Đợi thêm 4 giây rồi mới chạy GUI
-wait(2,7)
 
 local v14 = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();
 local v15 = v14:CreateWindow({
